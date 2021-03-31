@@ -2,6 +2,8 @@ import './ListeDossiers.scss';
 import Dossier from './Dossier';
 import * as crudDossiers from '../services/crud-dossiers';
 import { useState, useEffect } from 'react';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
 export default function ListeDossiers({utilisateur, etatDossiers}) {
   // État des dossiers (vient du composant Appli)
@@ -37,7 +39,21 @@ export default function ListeDossiers({utilisateur, etatDossiers}) {
   
   return (
     <>
-    <ul className="ListeDossiers">
+      <div className="TriDossier">
+        <TextField
+            id="standard-select-currency"
+            select
+            label="Tri des dossiers"
+            // value={currency}
+            // onChange={handleChange}
+          >
+          <MenuItem>Date de modification descendante</MenuItem>
+          <MenuItem>Nom de dossier ascendant</MenuItem>
+          <MenuItem>Nom de dossier descendantt</MenuItem>
+        </TextField>
+      </div>
+    
+    <ul className="ListeDossiers">     
       {
         (dossiers.length > 0) ?
           dossiers.map(dossier => <li key={dossier.id}><Dossier {...dossier} gererSupprimer={gererSupprimer} /></li>)

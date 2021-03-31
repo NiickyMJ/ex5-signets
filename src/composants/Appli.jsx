@@ -56,7 +56,7 @@ export default function Appli() {
         utilisateur ?
           <>
             <Entete utilisateur={utilisateur} />
-            <section className="contenu-principal">
+            <section className="contenu-principal">           
               <ListeDossiers utilisateur={utilisateur} etatDossiers={etatDossiers} />
               <AjouterDossier ouvert={ouvertAD} setOuvert={setOuvertAD} gererAjout={gererAjouter} />
               <Fab onClick={() => setOuvertAD(true)} className="ajoutRessource" color="primary" aria-label="Ajouter dossier">

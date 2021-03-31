@@ -23,3 +23,18 @@
     }
   }
 }
+
+.TriDossier {
+  display: flex;
+  padding-left: 10px;
+  justify-content: flex-start;
+
+  .MuiInputBase-root {
+    margin-top: 25px;    
+  }
+
+  .MuiSelect-root {
+    width: 350px;
+  }
+  
+}

@@ -30,12 +30,14 @@ export default function ListeDossiers({utilisateur, etatDossiers}) {
     )
   }
 
+  // Tri selon le nom ascendant
   function TriDateAsc() {
     crudDossiers.lireToutNomAsc(utilisateur.uid).then(
       dossiers => setDossiers(dossiers)
     )
   }
 
+  // Tri selon le nom descendant
   function TriNomAsc() {
     crudDossiers.lireToutNomDesc(utilisateur.uid).then(
       dossiers => setDossiers(dossiers)
@@ -64,8 +66,6 @@ export default function ListeDossiers({utilisateur, etatDossiers}) {
             id="standard-select-currency"
             select
             label="Tri des dossiers"
-            // value={currency}
-            // onChange={handleChange}
           >
           <MenuItem onClick={TriDateDesc}>Date de modification descendante</MenuItem>
           <MenuItem onClick={TriDateAsc}>Nom de dossier ascendant</MenuItem>

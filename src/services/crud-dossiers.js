@@ -43,9 +43,10 @@ export async function supprimer(uid, idd) {
   /************************************************************** Exercice #5 : question B **************************/
   // Une seule ligne de code suffit
   // return await [votre instruction pour supprimer le dossier de l'utilisateur connecté dans Firestore ici];
-  const docSupp = await firestore.collection(utilRef).doc(uid).collection(dossRef).delete(idd);
+   return firestore.collection(utilRef).doc(uid).collection(dossRef).doc(idd).delete().then(
+     firebase.firestore.FieldValue.arrayRemove(idd)
+   );
 
-  return await docSupp;
 }
 
 /**

@@ -58,7 +58,6 @@ export default function ListeDossiers({utilisateur, etatDossiers}) {
       }).catch(erreur => console.log('Échec de la suppression - Firestore a répondu :', erreur.message));
   }
 
-  
   return (
     <>
       <div className="TriDossier">

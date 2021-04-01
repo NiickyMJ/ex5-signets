@@ -66,9 +66,9 @@ export default function ListeDossiers({utilisateur, etatDossiers}) {
             select
             label="Tri des dossiers"
           >
-          <MenuItem onClick={TriDateDesc}>Date de modification descendante</MenuItem>
-          <MenuItem onClick={TriDateAsc}>Nom de dossier ascendant</MenuItem>
-          <MenuItem onClick={TriNomAsc}>Nom de dossier descendant</MenuItem>
+          <MenuItem key={'Date de modification descendante'} value={'Date de modification descendante'}  onClick={TriDateDesc}>Date de modification descendante</MenuItem>
+          <MenuItem key={'Nom de dossier ascendant'} value={'Nom de dossier ascendant'}  onClick={TriDateAsc}>Nom de dossier ascendant</MenuItem>
+          <MenuItem key={'Nom de dossier descendant'} value={'Nom de dossier descendant'}  onClick={TriNomAsc}>Nom de dossier descendant</MenuItem>
         </TextField>
       </div>
     

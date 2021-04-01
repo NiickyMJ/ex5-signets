@@ -34,6 +34,42 @@ export async function lireTout(uid) {
 }
 
 /**
+ * Obtenir tous les dossiers de l'utilisateur connecté dans l'ordre des noms ascendants
+ * @param {String} uid identifiant d'utilisateur Firebase
+ * @returns {Promise<any[]>} Promesse avec le tableau des documents de dossiers
+ */
+ export async function lireToutNomAsc(uid) {
+  const dossiers = [];
+  /************************************************************** Exercice #5 : question A **************************/
+  // Modifier très légèrement la ligne suivante
+  const reponse = await firestore.collection(utilRef).doc(uid).collection(dossRef).orderBy("nom", "asc").get();
+  reponse.forEach(
+    doc => {
+      dossiers.push({id: doc.id, ...doc.data()})
+    }
+  );
+  return dossiers;
+}
+
+/**
+ * Obtenir tous les dossiers de l'utilisateur connecté dans l'ordre des noms descendants
+ * @param {String} uid identifiant d'utilisateur Firebase
+ * @returns {Promise<any[]>} Promesse avec le tableau des documents de dossiers
+ */
+ export async function lireToutNomDesc(uid) {
+  const dossiers = [];
+  /************************************************************** Exercice #5 : question A **************************/
+  // Modifier très légèrement la ligne suivante
+  const reponse = await firestore.collection(utilRef).doc(uid).collection(dossRef).orderBy("nom", "desc").get();
+  reponse.forEach(
+    doc => {
+      dossiers.push({id: doc.id, ...doc.data()})
+    }
+  );
+  return dossiers;
+}
+
+/**
  * Supprimer un dossier pour l'utilisateur connecté
  * @param {String} uid identifiant d'utilisateur Firebase
  * @param {String} idd identifiant du document Firestore à supprimer
@@ -43,9 +79,9 @@ export async function supprimer(uid, idd) {
   /************************************************************** Exercice #5 : question B **************************/
   // Une seule ligne de code suffit
   // return await [votre instruction pour supprimer le dossier de l'utilisateur connecté dans Firestore ici];
-   return firestore.collection(utilRef).doc(uid).collection(dossRef).doc(idd).delete().then(
-     firebase.firestore.FieldValue.arrayRemove(idd)
-   );
+  const SuppDoc = firestore.collection(utilRef).doc(uid).collection(dossRef).doc(idd).delete();
+
+  return SuppDoc;
 
 }
 

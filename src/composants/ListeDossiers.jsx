@@ -23,6 +23,25 @@ export default function ListeDossiers({utilisateur, etatDossiers}) {
     }, []
   );
 
+  // Tri selon la date ascendante
+  function TriDateDesc() {
+    crudDossiers.lireTout(utilisateur.uid).then(
+      dossiers => setDossiers(dossiers)
+    )
+  }
+
+  function TriDateAsc() {
+    crudDossiers.lireToutNomAsc(utilisateur.uid).then(
+      dossiers => setDossiers(dossiers)
+    )
+  }
+
+  function TriNomAsc() {
+    crudDossiers.lireToutNomDesc(utilisateur.uid).then(
+      dossiers => setDossiers(dossiers)
+    )
+  }
+
   /**
    * Gérer le clic du bouton 'supprimer' correspondant au dossier identifié en argument
    * @param {string} idd identifiant Firestore du dossier
@@ -36,6 +55,7 @@ export default function ListeDossiers({utilisateur, etatDossiers}) {
         setDossiers(dossiersRestants); // Muter l'état pour forcer le réaffichage du composant
       }).catch(erreur => console.log('Échec de la suppression - Firestore a répondu :', erreur.message));
   }
+
   
   return (
     <>
@@ -47,9 +67,9 @@ export default function ListeDossiers({utilisateur, etatDossiers}) {
             // value={currency}
             // onChange={handleChange}
           >
-          <MenuItem>Date de modification descendante</MenuItem>
-          <MenuItem>Nom de dossier ascendant</MenuItem>
-          <MenuItem>Nom de dossier descendantt</MenuItem>
+          <MenuItem onClick={TriDateDesc}>Date de modification descendante</MenuItem>
+          <MenuItem onClick={TriDateAsc}>Nom de dossier ascendant</MenuItem>
+          <MenuItem onClick={TriNomAsc}>Nom de dossier descendant</MenuItem>
         </TextField>
       </div>
     
